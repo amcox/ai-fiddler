@@ -24,30 +24,31 @@
             var element = document.getElementById("ai");
             var tangle = new Tangle(element, {
                 initialize: function () {
-                    this.adv_e = 10;
-                    this.mast_e = 10;
-                    this.basic_e = 10;
-                    this.ab_e = 30;
-                    this.unsat_e = 40;
+                    this.adv_e = 1;
+                    this.mast_e = 6;
+                    this.basic_e = 36;
+                    this.ab_e = 32;
+                    this.unsat_e = 25;
                     this.total_e = this.adv_e+this.mast_e+this.basic_e+this.ab_e+this.unsat_e;
-                    this.adv_m = 10;
-                    this.mast_m = 10;
-                    this.basic_m = 10;
-                    this.ab_m = 30;
-                    this.unsat_m = 40;
+                    this.adv_m = 1;
+                    this.mast_m = 7;
+                    this.basic_m = 42;
+                    this.ab_m = 25;
+                    this.unsat_m = 25;
                     this.total_m = this.adv_m+this.mast_m+this.basic_m+this.ab_m+this.unsat_m;
-                    this.adv_sc = 10;
-                    this.mast_sc = 10;
-                    this.basic_sc = 10;
-                    this.ab_sc = 30;
-                    this.unsat_sc = 40;
+                    this.adv_sc = 0;
+                    this.mast_sc = 7;
+                    this.basic_sc = 34;
+                    this.ab_sc = 38;
+                    this.unsat_sc = 21;
                     this.total_sc = this.adv_sc+this.mast_sc+this.basic_sc+this.ab_sc+this.unsat_sc;
                     this.adv_ss = 1;
-                    this.mast_ss = 4;
-                    this.basic_ss = 29;
-                    this.ab_ss = 22;
-                    this.unsat_ss = 44;
+                    this.mast_ss = 8;
+                    this.basic_ss = 37;
+                    this.ab_ss = 29;
+                    this.unsat_ss = 25;
                     this.total_ss = this.adv_ss+this.mast_ss+this.basic_ss+this.ab_ss+this.unsat_ss;
+                    this.bonus = 10;
                     resetMax = function(subject, tang){
                       var levels = ["adv", "mast", "basic", "ab", "unsat"];
                       levels.each(function(level){
@@ -164,17 +165,17 @@
           </tr>
         </tbody>
       </table>
-      <div>
+      <p>
+        Bonus Points: <span data-var="bonus" class="TKAdjustableNumber " data-min="0" data-max="10" data-step="0.1" data-format="%.1f"></span>
+      </p>
+      <div style="margin-bottom:80px;">
         <div style="position: relative;">
          <canvas id="ai_chart_background" width="600" height="75" 
            style="position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
-         <canvas id="ai_chart_foreground" width="600" height="75" class="AIBar" data-var="ai_all"
+         <canvas id="ai_chart_foreground" width="600" height="75" class="AIBar" data-var="ai_all bonus"
            style="position: absolute; left: 0; top: 0; z-index: 1;"></canvas>
         </div>
       </div>
-      <p>
-        TEST VAR: <span data-var="test_var"></span>
-      </p>
     </div>
 
 </body>

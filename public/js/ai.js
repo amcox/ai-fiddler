@@ -21,13 +21,13 @@ Tangle.classes.AIBar = {
     initialize: function (element, options, tangle) {
     	this.tangle = tangle;
 		},		
-		update: function (element, ai_all){
+		update: function (element, ai_all, bonus){
 			var ctx = element.getContext("2d");
 			var multiple = 4;
 			ctx.clearRect(0,0,600,75);
 			// Bonnus point shaded region
 			ctx.fillStyle="rgba(201, 201, 201, 0.5)";
-			ctx.fillRect(ai_all*multiple,0,10*multiple,50);
+			ctx.fillRect(ai_all*multiple,0,bonus*multiple,50);
 			// AI line
 			ctx.lineWidth = 1;
 			ctx.strokeStyle="#000000";
@@ -38,13 +38,13 @@ Tangle.classes.AIBar = {
 			// Bonus line
 			ctx.strokeStyle="#878787";
 			ctx.beginPath();
-			ctx.moveTo((ai_all+10)*multiple, 0);
-			ctx.lineTo((ai_all+10)*multiple, 50);
+			ctx.moveTo((ai_all+bonus)*multiple, 0);
+			ctx.lineTo((ai_all+bonus)*multiple, 50);
 			ctx.stroke();
 			// Bonus text
 			ctx.fillStyle="#878787";
 			ctx.font="10px Arial";
-			ctx.fillText(sprintf("%.1f",(ai_all+10)),(ai_all+10)*multiple-10,60);
+			ctx.fillText(sprintf("%.1f",(ai_all+bonus)),(ai_all+bonus)*multiple-13,49);
 			// AI text
 			ctx.fillStyle="#000000";
 			ctx.font="20px Arial";
