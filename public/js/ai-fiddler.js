@@ -17,6 +17,24 @@ Tangle.classes.AIText = {
 		
 };
 
+Tangle.classes.RedHundredPercent = {
+
+    initialize: function (element, options, tangle) {
+    	this.tangle = tangle;
+		},
+		
+		update: function (element, value){
+			element.innerHTML=value + "%";
+			el = $(element);
+			if (value < 100) {
+				el.addClass("below100");
+			}else{
+				el.removeClass("below100");
+			};
+		}
+		
+};
+
 Tangle.classes.AIBar = {
     initialize: function (element, options, tangle) {
     	this.tangle = tangle;
