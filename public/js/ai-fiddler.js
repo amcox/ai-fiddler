@@ -88,3 +88,84 @@ drawAIBarBackground = function(el){
 jQuery(document).ready(function($) {
   drawAIBarBackground(document.getElementById("ai_chart_background"));
 });
+
+
+function setUpTangle () {
+
+    var element = document.getElementById("ai");
+    var tangle = new Tangle(element, {
+        initialize: function () {
+            this.adv_e = 1;
+            this.mast_e = 6;
+            this.basic_e = 36;
+            this.ab_e = 32;
+            this.unsat_e = 25;
+            this.total_e = this.adv_e+this.mast_e+this.basic_e+this.ab_e+this.unsat_e;
+            this.adv_m = 1;
+            this.mast_m = 7;
+            this.basic_m = 42;
+            this.ab_m = 25;
+            this.unsat_m = 25;
+            this.total_m = this.adv_m+this.mast_m+this.basic_m+this.ab_m+this.unsat_m;
+            this.adv_sc = 0;
+            this.mast_sc = 7;
+            this.basic_sc = 34;
+            this.ab_sc = 38;
+            this.unsat_sc = 21;
+            this.total_sc = this.adv_sc+this.mast_sc+this.basic_sc+this.ab_sc+this.unsat_sc;
+            this.adv_ss = 1;
+            this.mast_ss = 8;
+            this.basic_ss = 37;
+            this.ab_ss = 29;
+            this.unsat_ss = 25;
+            this.total_ss = this.adv_ss+this.mast_ss+this.basic_ss+this.ab_ss+this.unsat_ss;
+            this.bonus = 10;
+            resetMax = function(subject, tang){
+              var levels = ["adv", "mast", "basic", "ab", "unsat"];
+              levels.each(function(level){
+                  total_s = "total_" + subject
+                  level_s = level + "_" + subject
+                  new_max = 100 - (tang[total_s] - tang[level_s])
+                  $("[data-var=" + level_s + "]").attr("data-max", new_max)
+              });
+            };
+            resetMax("e", this);
+            resetMax("m", this);
+            resetMax("sc", this);
+            resetMax("ss", this);
+        },
+        update: function () {
+            this.total_e = this.adv_e+this.mast_e+this.basic_e+this.ab_e+this.unsat_e;
+            this.ai_e = (this.adv_e*150 + this.mast_e*125 + this.basic_e*100)/this.total_e;
+            
+            this.total_m = this.adv_m+this.mast_m+this.basic_m+this.ab_m+this.unsat_m;
+            this.ai_m = (this.adv_m*150 + this.mast_m*125 + this.basic_m*100)/this.total_m;
+            
+            this.total_sc = this.adv_sc+this.mast_sc+this.basic_sc+this.ab_sc+this.unsat_sc;
+            this.ai_sc = (this.adv_sc*150 + this.mast_sc*125 + this.basic_sc*100)/this.total_sc;
+            
+            this.total_ss = this.adv_ss+this.mast_ss+this.basic_ss+this.ab_ss+this.unsat_ss;
+            this.ai_ss = (this.adv_ss*150 + this.mast_ss*125 + this.basic_ss*100)/this.total_ss;
+            
+            this.total_all = this.total_e + this.total_m + this.total_sc + this.total_ss;
+            this.ai_all = (this.ai_e*2 + this.ai_m*2 + this.ai_sc + this.ai_ss)/6;
+            
+            this.test_var = this["total_e"];
+            
+            resetMax = function(subject, tang){
+              var levels = ["adv", "mast", "basic", "ab", "unsat"];
+              levels.each(function(level){
+                  total_s = "total_" + subject
+                  level_s = level + "_" + subject
+                  new_max = 100 - (tang[total_s] - tang[level_s])
+                  $("[data-var=" + level_s + "]").attr("data-max", new_max)
+              });
+            };
+            resetMax("e", this);
+            resetMax("m", this);
+            resetMax("sc", this);
+            resetMax("ss", this);
+        }
+    });
+}
+$(document).ready(setUpTangle)

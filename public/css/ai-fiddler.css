@@ -1,3 +1,58 @@
+body {
+  font-family: 'Helvetica','Arial',sans-serif;
+  font-size: 13px; }
+
 .below100 {
-	color: red;
-}
+  color: red; }
+
+table.percents {
+  font-size: 20px;
+  text-align: center;
+  padding: 10px;
+  border-collapse: collapse;
+  margin: 20px; }
+  table.percents tr {
+    border-bottom: 1px dotted black; }
+  table.percents td {
+    padding-top: 15px;
+    padding-bottom: 3px;
+    min-width: 100px; }
+  table.percents th.not-blank {
+    width: 100px; }
+  table.percents td.al {
+    text-align: right; }
+
+.bar-container {
+  margin: 20px;
+  margin-bottom: 100px;
+  width: 600px; }
+  .bar-container h2 {
+    text-align: center;
+    margin: 0px; }
+  .bar-container canvas.bar-back {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0; }
+  .bar-container canvas.bar-front {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1; }
+  .bar-container div.bar-relative {
+    position: relative; }
+
+p.explanation {
+  text-align: center;
+  font-style: italic;
+  font-weight: normal;
+  margin-top: 0px; }
+
+div.header {
+  width: 600px;
+  text-align: center; }
+  div.header h1 {
+    margin-bottom: 5px; }
+
+div.footer {
+  margin-top: 200px; }
