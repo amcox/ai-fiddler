@@ -42,11 +42,15 @@ table.percents {
   .bar-container div.bar-relative {
     position: relative; }
 
-p.explanation {
+.explanation {
   text-align: center;
   font-style: italic;
   font-weight: normal;
   margin-top: 0px; }
+
+td.explanation {
+  text-align: left;
+  font-size: 10pt; }
 
 div.header {
   width: 600px;
