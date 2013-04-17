@@ -84,6 +84,17 @@ drawAIBarBackground = function(el){
 	ctx.fillRect(85*multiple,0,100*multiple,50);
 	ctx.fillStyle="#B3B3FF";
 	ctx.fillRect(100*multiple,0,150*multiple,50);
+	ctx.fillStyle="#000000";
+	ctx.font="10px Arial";
+	ctx.fillText("50",50*multiple-6,10);
+	ctx.fillText("F",25*multiple-6,10);
+	ctx.fillText("70",70*multiple-6,10);
+	ctx.fillText("D",60*multiple-6,10);
+	ctx.fillText("85",85*multiple-6,10);
+	ctx.fillText("C",77.5*multiple-6,10);
+	ctx.fillText("100",100*multiple-8,10);
+	ctx.fillText("B",92.5*multiple-6,10);
+	ctx.fillText("A",125*multiple-6,10);
 }
 jQuery(document).ready(function($) {
   drawAIBarBackground(document.getElementById("ai_chart_background"));
