@@ -1,6 +1,4 @@
-configure :production do
-  require 'newrelic_rpm'
-end
+require 'newrelic_rpm'
 
 use Rack::Static, 
   :urls => ["/images", "/js", "/css"],
