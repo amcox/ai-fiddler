@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    newrelic_rpm (3.4.2.1)
     rack (1.5.2)
     sass (3.2.3)
 
@@ -8,5 +9,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  newrelic_rpm
   rack
   sass
