@@ -4,6 +4,10 @@
 //
 //  Click to toggle value between 0 and 1.
 
+function log (msg) {
+    if (window.console) { window.console.log(msg); }
+}
+
 Tangle.classes.AIText = {
 
     initialize: function (element, options, tangle) {
@@ -26,13 +30,37 @@ Tangle.classes.RedHundredPercent = {
 		update: function (element, value){
 			element.innerHTML=value + "%";
 			el = $(element);
-			if (value < 100) {
+			if (value != 100) {
 				el.addClass("below100");
 			}else{
 				el.removeClass("below100");
 			};
 		}
 		
+};
+
+Tangle.classes.AverageMover = {
+    initialize: function (element, options, tangle, variable) {
+    	this.tangle = tangle;
+			this.element = element;
+			this.ai_level = options.level;
+			var ai_level = this.ai_level;
+			this.variable = variable;
+			this.subjects = ["e", "m", "sc", "ss"];
+			this.self_value = options.starting;
+		},
+		update: function (element, value){
+			if(this.self_value != value){
+				var tan = this.tangle;
+				var ai_level = this.ai_level
+				this.subjects.each(function(subject){
+					var attr_to_set = ai_level + "_" + subject;
+					tan.setValue(attr_to_set, value);
+				});
+			};
+			element.innerHTML=value + "%";
+			this.self_value = value;
+		}
 };
 
 Tangle.classes.AIBar = {
@@ -131,6 +159,12 @@ function setUpTangle () {
             this.unsat_ss = 25;
             this.total_ss = this.adv_ss+this.mast_ss+this.basic_ss+this.ab_ss+this.unsat_ss;
             this.bonus = 10;
+						this.adv_avg = 1;
+						this.mast_avg = 7;
+						this.basic_avg = 37;
+						this.ab_avg = 31;
+						this.unsat_avg = 24;
+						this.total_avg = this.adv_avg+this.mast_avg+this.basic_avg+this.ab_avg+this.unsat_avg;
             resetMax = function(subject, tang){
               var levels = ["adv", "mast", "basic", "ab", "unsat"];
               levels.each(function(level){
@@ -140,10 +174,28 @@ function setUpTangle () {
                   $("[data-var=" + level_s + "]").attr("data-max", new_max)
               });
             };
+						resetMaxAllMover = function(level, tang){
+							var subjects = ["e", "m", "sc", "ss"]
+							var max = 100
+							subjects.each(function(subject){
+								level_s = level + "_" + subject
+								this_max = $("[data-var=" + level_s + "]").attr("data-max")
+								if(this_max < max){ max = this_max}
+							});
+							$("[data-var=" + level + "_avg" + "]").attr("data-max", max)
+						};
+						
             resetMax("e", this);
             resetMax("m", this);
             resetMax("sc", this);
             resetMax("ss", this);
+						
+						var levels = ["adv", "mast", "basic", "ab", "unsat"];
+						tan = this.tangle
+						levels.each(function(level){
+							resetMaxAllMover(level, tan);
+						});
+						// resetMaxAllMover("adv", this);
         },
         update: function () {
             this.total_e = this.adv_e+this.mast_e+this.basic_e+this.ab_e+this.unsat_e;
@@ -163,19 +215,16 @@ function setUpTangle () {
             
             this.test_var = this["total_e"];
             
-            resetMax = function(subject, tang){
-              var levels = ["adv", "mast", "basic", "ab", "unsat"];
-              levels.each(function(level){
-                  total_s = "total_" + subject
-                  level_s = level + "_" + subject
-                  new_max = 100 - (tang[total_s] - tang[level_s])
-                  $("[data-var=" + level_s + "]").attr("data-max", new_max)
-              });
-            };
             resetMax("e", this);
             resetMax("m", this);
             resetMax("sc", this);
             resetMax("ss", this);
+
+						var levels = ["adv", "mast", "basic", "ab", "unsat"];
+						tan = this.tangle
+						levels.each(function(level){
+							resetMaxAllMover(level, tan);
+						});
         }
     });
 }

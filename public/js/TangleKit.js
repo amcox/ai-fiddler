@@ -217,7 +217,7 @@ Tangle.classes.TKAdjustableNumber = {
     },
     
     touchDidMove: function (touches) {
-	//lets Tangle respond WITHIN drag duration to new attribute settings
+				//lets Tangle respond WITHIN drag duration to new attribute settings
         var attributes = this.element.attributes;
         var regexp = /^data-[\w\-]+$/;
         for (var i = 0, length = attributes.length; i < length; i++) {
@@ -228,8 +228,7 @@ Tangle.classes.TKAdjustableNumber = {
             
             this[attrName.substr(5)] = attr.value;
         }
-
-	var value = this.valueAtMouseDown + touches.translation.x / 5 * this.step;
+				var value = this.valueAtMouseDown + touches.translation.x / 5 * this.step;
         value = ((value / this.step).round() * this.step).limit(this.min, this.max);
         this.tangle.setValue(this.variable, value);
         this.updateHelp();

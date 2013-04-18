@@ -52,6 +52,10 @@ td.explanation {
   text-align: left;
   font-size: 10pt; }
 
+th.explanation {
+  font-size: 10pt;
+  text-align: bottom; }
+
 div.header {
   width: 600px;
   text-align: center; }
@@ -60,3 +64,10 @@ div.header {
 
 div.footer {
   margin-top: 200px; }
+
+.show-on-hover span {
+  display: none; }
+.show-on-hover .TKAdjustableNumberDown {
+  display: inline; }
+.show-on-hover:hover span {
+  display: inline; }
