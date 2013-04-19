@@ -1,0 +1,6 @@
+# Logfile created on 2013-04-19 11:37:10 -0500 by logger.rb/31641
+[04/19/13 11:37:10 -0500 Andrew-Coxs-MacBook-Pro.local (78660)] INFO : No dispatcher detected.
+[04/19/13 11:37:10 -0500 Andrew-Coxs-MacBook-Pro.local (78660)] ERROR : Unable to determine application name. Please set the application name in your newrelic.yml or in a NEW_RELIC_APP_NAME environment variable.
+[04/19/13 11:37:10 -0500 Andrew-Coxs-MacBook-Pro.local (78660)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[04/19/13 11:37:10 -0500 Andrew-Coxs-MacBook-Pro.local (78660)] INFO : New Relic Ruby Agent 3.4.2.1 Initialized: pid = 78660
+[04/19/13 11:37:10 -0500 Andrew-Coxs-MacBook-Pro.local (78660)] INFO : Agent Log at /Users/Andrew/Sites/ai-fiddler/log/newrelic_agent.log
